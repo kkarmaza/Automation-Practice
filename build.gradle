@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+//библиотеки с зависимости
+dependencies {
+    //зависимости для тестов
+    testImplementation(
+            "com.codeborne:selenide:6.5.0",
+            "org.junit.jupiter:junit-jupiter:5.8.2"
+    )
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()//отвечает за запуск тестов
+}
