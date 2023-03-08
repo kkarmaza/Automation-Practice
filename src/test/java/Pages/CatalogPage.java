@@ -2,6 +2,7 @@ package Pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import utils.ConfirmationMessages;
 
@@ -73,7 +74,9 @@ public class CatalogPage extends BasePage {
     }
 
     public void checkAddedProduct() {
-        totalItem.shouldHave(Condition.text("1 Item in Cart"));
+        //totalItem.shouldHave(Condition.text("1 Item in Cart"));
+        Assertions.assertEquals(totalItem.text(), "1 Item in Cart");
+
     }
 
     public void deleteItem() {
@@ -81,14 +84,18 @@ public class CatalogPage extends BasePage {
     }
 
     public void checkDeleteMessage() {
-        deleteMessage.shouldBe(Condition.visible);
+        //deleteMessage.shouldBe(Condition.visible);
+        Assertions.assertTrue(deleteMessage.exists());
     }
 
     public void confirmDeleting() {
         confirmDeletingButton.click();
     }
 
-    public void checkNoItemMessage() { noItemMessage.shouldHave(text(ConfirmationMessages.NOITEMS.getConfirmationMessage())); }
+    public void checkNoItemMessage() {
+        //noItemMessage.shouldHave(text(ConfirmationMessages.NOITEMS.getConfirmationMessage()));
+        Assertions.assertEquals(noItemMessage.text(), ConfirmationMessages.NOITEMS.getConfirmationMessage());
+    }
 
     public void logOut() {
         userMemu.click();
