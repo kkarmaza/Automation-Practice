@@ -32,84 +32,69 @@ public class CatalogPage extends BasePage {
         super(pageURL);
     }
 
-    //Open tab Men - > Tops
     public void openMenTops() {
         menuTabMen.hover();
         menuItemTops.click();
     }
 
-    //Select Style -> Rain coat
     public void openRainCoat() {
         shoppingOptionStyle.click();
         categoryRainCoat.click();
     }
 
-    //Select via as List
     public void selectListView() {
         viewList.click();
     }
 
-    //Sort by Price
     public void sortByPrice() {
         sorter.click();
         sorterOptionPrice.click();
     }
 
     public void addProductToCart(int productID, String size) {
-        SelenideElement productSize = $(By.xpath("//ol[@class='products list items product-items']/li[" + productID + "]//div[text()='" + size + "']"));
-        SelenideElement productColor = $(By.xpath("//ol[@class='products list items product-items']/li[" + productID + "]//div[@aria-label='Color']/div[2]"));
-        SelenideElement addToCartButton = $(By.xpath("//ol[@class='products list items product-items']/li[" + productID + "]//div[@class='actions-primary']"));
-        //Select size
+        SelenideElement productSize = $(By.xpath("//ol[@class='products list items product-items']/li["
+                + productID + "]//div[text()='" + size + "']"));
+        SelenideElement productColor = $(By.xpath("//ol[@class='products list items product-items']/li["
+                + productID + "]//div[@aria-label='Color']/div[2]"));
+        SelenideElement addToCartButton = $(By.xpath("//ol[@class='products list items product-items']/li["
+                + productID + "]//div[@class='actions-primary']"));
+
         productSize.click();
-        //Select color
         productColor.click();
-        //Click “Add to cart” button
         addToCartButton.click();
     }
 
-    //Waiting for the item to be added to the shopping cart
     public void waitForAddingItem() {
         cartCaunter.should(Condition.appear);
     }
 
-    //Click to shopping cart
     public void clickShoppingCart() {
         shoppingCartIcon.click();
     }
 
-    //Check that coat is added
     public void checkAddedProduct() {
         totalItem.shouldHave(Condition.text("1 Item in Cart"));
     }
 
-    //Click delete item
     public void deleteItem() {
         deleteItemButton.click();
     }
 
-    //Check that “Are you sure you would like to remove this item from the shopping cart?” is visible
     public void checkDeleteMessage() {
         deleteMessage.shouldBe(Condition.visible);
     }
 
-
-    //Click on “Ok” button
     public void confirmDeleting() {
         confirmDeletingButton.click();
     }
 
-    //Check that cart provides the message “You have no items in your shopping cart“.
-
-    public void checkNoItemMessage() {
-        noItemMessage.shouldHave(text(ConfirmationMessages.NOITEMS.getConfirmationMessage()));
-    }
+    public void checkNoItemMessage() { noItemMessage.shouldHave(text(ConfirmationMessages.NOITEMS.getConfirmationMessage())); }
 
     public void logOut() {
         userMemu.click();
         userMemuSignOut.click();
     }
 
-    //Open cart page
     public void openCartPage() {
         viewCartLink.click();
     }
