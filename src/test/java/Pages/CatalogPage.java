@@ -74,7 +74,6 @@ public class CatalogPage extends BasePage {
     }
 
     public void checkAddedProduct() {
-        //totalItem.shouldHave(Condition.text("1 Item in Cart"));
         Assertions.assertEquals(totalItem.getText(), "1 Item in Cart");
 
     }
@@ -84,7 +83,6 @@ public class CatalogPage extends BasePage {
     }
 
     public void checkDeleteMessage() {
-        //deleteMessage.shouldBe(Condition.visible);
         Assertions.assertTrue(deleteMessage.exists());
     }
 
@@ -93,7 +91,7 @@ public class CatalogPage extends BasePage {
     }
 
     public void checkNoItemMessage() {
-        //noItemMessage.shouldHave(text(ConfirmationMessages.NOITEMS.getConfirmationMessage()));
+        noItemMessage.should(Condition.appear);
         Assertions.assertEquals(noItemMessage.getText(), ConfirmationMessages.NOITEMS.getConfirmationMessage());
     }
 
