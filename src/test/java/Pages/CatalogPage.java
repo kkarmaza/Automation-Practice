@@ -4,12 +4,14 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import tests.TestLogin;
 import utils.ConfirmationMessages;
-
-import static com.codeborne.selenide.Condition.text;
+import java.util.logging.Logger;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CatalogPage extends BasePage {
+
+    Logger logger = Logger.getLogger(TestLogin.class.getName());
 
     private SelenideElement menuTabMen = $(By.xpath("//a[@id='ui-id-5']"));
     private SelenideElement menuItemTops = $(By.xpath("//a[@id='ui-id-17']"));
@@ -35,19 +37,24 @@ public class CatalogPage extends BasePage {
 
     public void openMenTops() {
         menuTabMen.hover();
+        logger.warning("Open MenTops Page");
         menuItemTops.click();
     }
 
     public void openRainCoat() {
+        logger.info("Select Shopping Options - Style");
         shoppingOptionStyle.click();
+        logger.info("Select Shopping Options - RainCoat");
         categoryRainCoat.click();
     }
 
     public void selectListView() {
+        logger.info("Select List View");
         viewList.click();
     }
 
     public void sortByPrice() {
+        logger.info("Select Sort option - Price");
         sorter.click();
         sorterOptionPrice.click();
     }
@@ -60,8 +67,11 @@ public class CatalogPage extends BasePage {
         SelenideElement addToCartButton = $(By.xpath("//ol[@class='products list items product-items']/li["
                 + productID + "]//div[@class='actions-primary']"));
 
+        logger.info("Select Size");
         productSize.click();
+        logger.info("Select Color");
         productColor.click();
+        logger.warning("Add item to the Cart");
         addToCartButton.click();
     }
 
@@ -70,15 +80,16 @@ public class CatalogPage extends BasePage {
     }
 
     public void clickShoppingCart() {
+        logger.warning("Open Cart");
         shoppingCartIcon.click();
     }
 
     public void checkAddedProduct() {
         Assertions.assertEquals(totalItem.getText(), "1 Item in Cart");
-
     }
 
     public void deleteItem() {
+        logger.warning("Delete Item");
         deleteItemButton.click();
     }
 
@@ -87,6 +98,7 @@ public class CatalogPage extends BasePage {
     }
 
     public void confirmDeleting() {
+        logger.info("Confirm Deleting Item");
         confirmDeletingButton.click();
     }
 
@@ -96,6 +108,7 @@ public class CatalogPage extends BasePage {
     }
 
     public void logOut() {
+        logger.warning("Sign Out");
         userMemu.click();
         userMemuSignOut.click();
     }
