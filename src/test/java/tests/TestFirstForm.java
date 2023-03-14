@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,7 @@ public class TestFirstForm {
     }
 
     @Test
+    @Story("Test Registration form")
     void successfulRegistration()
     {
         String name ="Karina";
@@ -38,7 +40,5 @@ public class TestFirstForm {
 
         //check the output
         $("[id=output]").shouldHave(text(name), text(email), text(currentAddress), text(permanentAddress));
-
-
     }
 }

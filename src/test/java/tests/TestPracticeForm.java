@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class TestPracticeForm {
     }
 
     @Test
+    @Story("Practise with locators")
     void SuccessfulStudentRegistration() {
         String firstName = "Karina";
         String lastName = "Karmaza";
