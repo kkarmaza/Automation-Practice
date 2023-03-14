@@ -1,13 +1,14 @@
 package Pages;
 
-import com.codeborne.selenide.SelenideDriver;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
-
+import tests.TestLogin;
+import java.util.logging.Logger;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
+    Logger logger = Logger.getLogger(TestLogin.class.getName());
 
     private SelenideElement emailField = $(By.xpath("//input[@id='email']"));
     private SelenideElement passwordField = $(By.xpath("//input[@id='pass']"));
@@ -24,6 +25,7 @@ public class LoginPage extends BasePage {
     public void loginAsUser(String email, String password) {
         emailField.setValue(email);
         passwordField.setValue(password);
+        logger.warning("Submit form");
         signInButton.click();
     }
 
@@ -34,6 +36,7 @@ public class LoginPage extends BasePage {
     public void goToJacketPage() {
         menuTabMen.hover();
         menuItemTops.hover();
+        logger.warning("Open Jacket Page");
         menuItemJackets.click();
     }
 
